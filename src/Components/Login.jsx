@@ -1,10 +1,24 @@
 import React, { useState } from "react";
+import {signup} from "../Api/auth";
 
 function Login() {
   const [showSignUp, setShowSignUp] = useState(true);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   const toggleSignup = () => {
     setShowSignUp(!showSignUp);
+  };
+
+  const signinHandler = () => {
+    const user = (username, password, email);
+    try {
+      const res = signup(user);
+      console.log(res);
+    } catch (error) {
+      console.log();
+    }
   };
 
   return (
@@ -21,6 +35,8 @@ function Login() {
               className="form-control"
               placeholder="Username"
               id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div className="input-group m-1">
@@ -29,15 +45,19 @@ function Login() {
               className="form-control"
               placeholder="Password"
               id="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           {showSignUp && (
-            <div className=" input-group m-1">
+            <div className=" input-group ">
               <input
                 type="email  "
                 className="form-control m-1"
                 placeholder="Email"
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           )}
@@ -46,13 +66,14 @@ function Login() {
               type="submit"
               className="btn btn-primary form-control m-1"
               value={showSignUp ? "SignUp" : "Log In"}
+              onClick={showSignUp ? signinHandler : signinHandler}
             />
           </div>
           <div className="m-1" onClick={toggleSignup}>
             <p className="lead text-primary m-1">
               {showSignUp
-                ? "Already have a account ? Log In"
-                : "Don't have any account ? Sign UP"}{" "}
+                ? "Already have an account ? Log In"
+                : "Don't have an account ? Sign UP"}{" "}
             </p>
           </div>
         </div>
