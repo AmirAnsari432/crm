@@ -1,11 +1,15 @@
-import axios from "axios";
+import axios from 'axios'; 
 
-import { API_BASE_URL, TIMEOUT } from "../Config/config";
-// globle headers
-axios.defaults.common["Content-type"] = "application/json";
-axios.defaults.common["Accept"] = "application/json";
+import { API_BASE_URL, TIMEOUT } from '../Config/config';
+
+
+// global headers 
+axios.defaults.headers.common['Content-Type']='application/json';
+axios.defaults.headers.common['Accept']='application/json';
 
 export const AxiosInstance = axios.create({
-  baseUrl: API_BASE_URL,
-  timeout:  TIMEOUT,
-});
+
+    baseURL: API_BASE_URL,
+    timeout: TIMEOUT
+  
+  });
