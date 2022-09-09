@@ -13,6 +13,7 @@ function Login() {
     // grabbing the values from input boxes and storing it 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [mobile , setMobile] = useState ('');
     const [email, setEmail] = useState('');
     const [auth, setAuth] = useState('');
 
@@ -61,6 +62,13 @@ function Login() {
                     <div className="input-group m-1">
                         <input type="password" className='form-control' placeholder="Password" id="password" value={password} onChange={(e)=> setPassword(e.target.value)} />
                     </div>
+                    {
+                      showSignup && 
+                        <div className="input-group">
+                          <input type="mobile" className='form-control' placeholder='Mobile' id='mobile' value={mobile} onChange={(e)=> setMobile(e.target.value)} />
+                        </div>
+                      
+                    }
 
                     {showSignup &&
                         <div className="input-group m-1">
